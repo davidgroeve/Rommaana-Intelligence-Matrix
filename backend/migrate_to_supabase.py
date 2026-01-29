@@ -18,7 +18,7 @@ supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 def migrate_candidates():
     print("Phase 1: Migrating Candidates...")
-    candidates = utils.load_candidates()
+    candidates = utils.load_candidates(force_local=True)
     if not candidates:
         print("No candidates found locally.")
         return

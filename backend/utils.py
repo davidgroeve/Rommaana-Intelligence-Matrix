@@ -38,9 +38,9 @@ def save_cache(data):
     with open(CACHE_PATH, "w") as f:
         json.dump(data, f, indent=2)
 
-def load_candidates():
+def load_candidates(force_local=False):
     # Attempt to load from Cloud (Supabase) if configured
-    if supabase:
+    if supabase and not force_local:
         try:
             response = supabase.table("candidates").select("*").execute()
             return response.data

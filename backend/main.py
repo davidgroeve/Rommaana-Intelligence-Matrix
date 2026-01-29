@@ -173,12 +173,26 @@ def analyze_candidates(request: JobDescriptionRequest):
 
 @app.get("/api/resume/{filename}")
 def get_resume_text(filename: str):
-    # Try local or direct filename first
+    print(f"DEBUG: Request for resume text: {filename}")
+    # 1. Try local/direct first
     text = utils.get_pdf_text(filename)
     if text:
         return {"text": text}
         
-    # Cloud Lookup: If filename not found, check candidate resume_url
+    # 2. Cloud Lookup (Optimized)
+    if utils.supabase:
+        try:
+            res = utils.supabase.table("candidates").select("resume_url").eq("local_filename", filename).execute()
+            if res.data and res.data[0].get("resume_url"):
+                url = res.data[0]["resume_url"]
+                print(f"DEBUG: Found cloud URL for {filename}: {url}")
+                text = utils.get_pdf_text(url)
+                if text:
+                    return {"text": text}
+        except Exception as e:
+            print(f"DEBUG: Supabase optimization failed: {e}")
+
+    # 3. Fallback to full load (slow)
     candidates = utils.load_candidates()
     for c in candidates:
         if c.get("local_filename") == filename and c.get("resume_url"):
@@ -186,7 +200,52 @@ def get_resume_text(filename: str):
             if text:
                 return {"text": text}
 
-    raise HTTPException(status_code=404, detail="File not found or empty")
+    raise HTTPException(status_code=404, detail=f"Resume text not found for {filename}")
+@app.get("/api/download/{filename}")
+def get_pdf_download(filename: str):
+    print(f"DEBUG: Request to download PDF: {filename}")
+    backend_dir = os.path.dirname(os.path.abspath(__file__))
+    root_dir = os.path.dirname(os.path.dirname(backend_dir))
+    
+    # 1. Try local
+    pdf_path = os.path.join(root_dir, filename)
+    if not os.path.exists(pdf_path):
+        pdf_path = os.path.join(backend_dir, filename)
+    
+    if os.path.exists(pdf_path):
+        return FileResponse(pdf_path, media_type="application/pdf", filename=filename)
+    
+    # 2. Cloud Fallback (Optimized)
+    if utils.supabase:
+        try:
+            res = utils.supabase.table("candidates").select("resume_url").eq("local_filename", filename).execute()
+            if res.data and res.data[0].get("resume_url"):
+                url = res.data[0]["resume_url"]
+                print(f"DEBUG: Redirecting/Streaming from Cloud Storage: {url}")
+                try:
+                    import requests
+                    resp = requests.get(url, timeout=10)
+                    resp.raise_for_status()
+                    return StreamingResponse(
+                        io.BytesIO(resp.content),
+                        media_type="application/pdf",
+                        headers={"Content-Disposition": f"attachment; filename={filename}"}
+                    )
+                except Exception as e:
+                    print(f"DEBUG: Streaming failed, redirecting: {e}")
+                    from fastapi.responses import RedirectResponse
+                    return RedirectResponse(url)
+        except Exception as e:
+            print(f"DEBUG: Supabase download optimization failed: {e}")
+
+    # 3. Slow Fallback
+    candidates = utils.load_candidates()
+    for c in candidates:
+        if c.get("local_filename") == filename and c.get("resume_url"):
+            from fastapi.responses import RedirectResponse
+            return RedirectResponse(c["resume_url"])
+
+    raise HTTPException(status_code=404, detail="PDF file not found")
 
 @app.post("/api/feedback")
 def submit_feedback(request: FeedbackRequest):
