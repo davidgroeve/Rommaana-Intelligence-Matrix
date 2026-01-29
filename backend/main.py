@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException, Request
-from fastapi.responses import FileResponse, StreamingResponse, RedirectResponse
+from fastapi.responses import FileResponse, StreamingResponse, RedirectResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional
@@ -7,8 +7,26 @@ import utils
 import json
 import os
 import io
+import traceback
 
 app = FastAPI()
+
+# Global Exception Handler for Debugging
+@app.exception_handler(Exception)
+async def global_exception_handler(request: Request, exc: Exception):
+    return JSONResponse(
+        status_code=500,
+        content={
+            "error": "Internal Server Error",
+            "detail": str(exc),
+            "type": str(type(exc)),
+            "traceback": traceback.format_exc()
+        }
+    )
+
+@app.get("/api")
+def api_root():
+    return {"message": "Intelligence Matrix API Active", "version": "1.1.0"}
 
 app.add_middleware(
     CORSMiddleware,
