@@ -1,0 +1,167 @@
+Job Descriptions
+Rommaana Technologies is a technology startup building an insurance-as-service platform company with the mission to transform Insurance into a fair, lovable and instant everywhere product for everyone.  The founding team worked in Microsoft, Paribas Bank, Plug&Play VC and several high-growth startups globally with exits and scale-ups successes. The HQ is based in Riyadh, Saudi Arabia.
+Please send your resume Gustavo Madico gustavo.madico@lovepomegranate.com
+Website: https://www.rommaana.com/
+Here’s an improved and polished version of your job description that highlights Rommaana’s unique selling points while making it more engaging and concise:
+Operations Manager Associate (insurtech) - HIRING
+We are growing!
+ Are you passionate about startups, technology, and transforming industries? Join us at Rommaana, an innovative Insurtech start-up on a mission to revolutionize the insurance industry. We are looking for an Operations Manager Associate who thrives in fast-paced environments and wants to help us change the rules of the game.
+In this role, you will work directly with our CEO and Operations team, focusing on driving growth through creative strategies, proactive problem-solving, and building meaningful client relationships.
+Why Rommaana?
+🖥️ Hybrid Work: Work from home or the office—the choice is yours.
+ 💛 Inclusive Culture: Join a diverse team with an international mindset.
+ 📈 Experienced Leadership: Learn from a founding team with experience at D360 Bank, Saudi Payments, Chubb, Tree and Microsoft 🚀 Career Growth: Be part of a company that offers opportunities to grow and take on more responsibility.
+ 🌴 Team Bonding: Enjoy our  corporate event in Riyadh and Europe
+Your Responsibilities
+Manage regulatory compliance and documentation.
+Improve and automate operational processes.
+Manage daily insurance operations (policy issuance, cancellations, reporting).
+Coordinate with insurance carriers and partners.
+What We’re Looking For
+Education: Bachelor’s or Master’s degree in Business, Computer Science, Telecommunications, or related fields from a top university.
+Skills: A proactive, self-starting attitude with exceptional organizational and time-management skills.
+Experience: Prior experience in insurance or education in insurance is required.
+Passion: Eagerness to work in a startup environment and a genuine interest in technology.
+Languages:
+Native-level Arabic (essential for engaging key clients).
+Advanced English (our primary working language).
+What’s in It for You?
+Competitive salary: Get rewarded for your hard work. 
+Flexibility: Enjoy flexible working hours and a hybrid work environment.
+Ownership: All full-time employees receive an ESOP share package, giving you a stake in Rommaana’s success (just like in Silicon Valley).
+Growth Opportunities: Learn from industry leaders and take on impactful projects.
+Team Events: Join us in riyadh  our annual summer corporate retreat
+Junior Software Engineer  - HIRING
+At Rommaana Technologies we put our users first. We are looking for colleagues who remain learners throughout their careers and whose curiosity and motivation in understanding machine learning and insurtech will provide “game-changing” insurtech software and algorithms.
+Job Overview: We are seeking a passionate and talented Junior Software Engineer to join our dynamic team. In this role, you will assist in the design, development, and deployment of innovative software solutions. You will work closely with senior engineers and cross-functional teams to gain valuable experience and contribute to the success of our projects.
+Location: [Remote / Hybrid / Office — Riyadh]
+Type: Full-time
+Team: Engineering
+Experience Level: Junior (1–3 years)
+About the Role
+We’re looking for a Junior Backend Engineer to join our engineering team and help build reliable, scalable backend systems. You’ll work primarily with Python, Google Cloud Platform (GCP), Cloud Run, and PostgreSQL, and collaborate closely with senior engineers to design, build, and maintain production services.
+We make heavy use of Claude Code and AI-assisted development workflows, so you’ll be expected to work effectively with AI coding tools to accelerate delivery while maintaining high engineering standards.
+This is a great opportunity for someone early in their career who wants to learn modern cloud-native backend development in a fast-moving environment.
+What You’ll Do
+Develop and maintain backend services using Python
+Build and deploy containerized applications on GCP Cloud Run
+Design and interact with PostgreSQL databases (queries, migrations, schema updates)
+Write clean, maintainable, and well-tested code
+Collaborate with senior engineers on architecture and implementation decisions
+Use Claude Code and AI-assisted tools to speed up development, debugging, and refactoring
+Monitor application performance, troubleshoot issues, and fix bugs
+Contribute to code reviews and engineering best practices
+Learn and improve continuously through mentorship and real production work
+Business Development / Operations CO-OP Trainee
+We are growing!
+ Are you passionate about startups, technology, and transforming industries? Join us at Rommaana, an innovative Insurtech start-up on a mission to revolutionize the insurance industry. We are looking for a Business Development / Operations Intern who thrives in fast-paced environments and wants to help us change the rules of the game.
+In this role, you will work directly with our CEO and Sales & Operations team, focusing on driving growth through creative strategies, proactive problem-solving, and building meaningful client relationships.
+Why Rommaana?
+🖥️ Hybrid Work: Work from home or the office—the choice is yours.
+ 💛 Inclusive Culture: Join a diverse team with an international mindset.
+ 📈 Experienced Leadership: Learn from a founding team with experience at D360 Bank, Saudi Payments, Chubb, Tree and Microsoft 🚀 Career Growth: Be part of a company that offers opportunities to grow and take on more responsibility.
+ 🌴 Team Bonding: Enjoy our  corporate event in Riyadh and Europe
+Your Responsibilities
+Craft and refine proposals for B2B clients, partners, and government agencies.
+Conduct market research to uncover new opportunities and support strategic initiatives under the CEO’s guidance.
+Create and deliver compelling pitches, sales decks, and financial forecasts with the CEO and COO.
+Co-Lead Operations and Customer Success without B2B Clients and partners.
+Represent Rommaana at industry events and network with key stakeholders.
+Schedule and participate in high-level business meetings with C-suite executives.
+What We’re Looking For
+Education: Bachelor’s or Master’s degree in Business, Computer Science, Telecommunications, or related fields from a top university.
+Skills: A proactive, self-starting attitude with exceptional organizational and time-management skills.
+Experience: Prior experience in sales, business development, or startups is a plus (e.g., former entrepreneur or early employee).
+Passion: Eagerness to work in a startup environment and a genuine interest in technology.
+Languages:
+Native-level Arabic (essential for engaging key clients).
+Advanced English (our primary working language).
+What’s in It for You?
+Competitive CO-OP Trainee Financial Aid: Get rewarded for your hard work. You have been enlisted in a Co-OP or trainer program at a Saudi University. You will get financial aid monthly. 4 months CO-OP training
+Flexibility: Enjoy flexible working hours and a hybrid work environment.
+Ownership: All full-time employees receive an ESOP share package, giving you a stake in Rommaana’s success (just like in Silicon Valley).
+Growth Opportunities: Learn from industry leaders and take on impactful projects.
+Team Events: Join us in Valencia, Spain for our annual summer corporate retreat!
+Product Designer  / Product Owner intern
+We are growing!
+
+ We are looking for creative minds who want to be part of an innovative and inclusive Insurtech start-up and help us reshape how insurance is designed and delivered.
+ We have one open position for a Product Designer Intern to help us design seamless, user-friendly products that bridge the gap between complex insurance systems and intuitive customer experiences.
+Why choose us?
+ 🖥️ Hybrid work: at home or in the office, the choice is yours.
+ 💛 Diverse and inclusive environment with an international profile.
+ 🎨 Work on high-impact projects shaping the future of insurance.
+ 📈 Learn from a founding team with experience in Microsoft, Paribas Bank, Chubb Insurance
+ 🚀 Opportunity to grow within the company.
+What will be your responsibilities?
+Collaborate with product managers and developers to design intuitive interfaces for our digital onboarding platform and embedded insurance solutions.
+Create wireframes, prototypes, and high-fidelity designs for web and mobile applications.
+Collaborate with stakeholders to gather and document product requirements.
+Develop and prioritize the product backlog, ensuring alignment with business goals.
+Conduct user research and testing to understand customer pain points and refine designs accordingly.
+Ensure a consistent visual identity across all platforms by adhering to our brand guidelines.
+Present your design concepts to stakeholders and iterate based on feedback.
+Stay updated on design trends, tools, and best practices to bring fresh ideas to the team.
+What should you have?
+Bachelor’s or Master’s degree in Design, Human-Computer Interaction, or related fields.
+Experience with design tools like Figma, Sketch, or Adobe Creative Suite.
+Basic understanding of user research, usability testing, and UX/UI design principles.
+A proactive attitude with a strong desire to learn and grow in a fast-paced startup environment.
+An eye for detail and the ability to think both creatively and critically.
+Portfolio showcasing relevant design work (required).
+Languages
+Advanced or intermediate English with a willingness to learn.
+Arabic native level (for understanding user needs in key markets).
+Spanish is a plus.
+What will you get in return?
+Competitive academic financial aid
+Flexible working hours.
+All full-time employees receive an ESOP share package from the company (like in Silicon Valley).
+Summer corporate event in Valencia, Spain.
+Sales & Operations Trainee
+We are growing!
+ Are you passionate about startups, technology, and transforming industries? Join us at Rommaana, an innovative Insurtech start-up on a mission to revolutionise the insurance industry internationally. We are seeking a Sales & Operations Intern who excels in fast-paced environments and is eager to help us redefine the rules of the game.
+In this role, you will work directly with our CEO and Sales & Operations team, focusing on driving growth through creative strategies, proactive problem-solving, and building meaningful client relationships.
+Why Rommaana?
+🖥️ Hybrid Work: Work from home or the office—the choice is yours.
+ 💛 Inclusive Culture: Join a diverse team with an international mindset with successful founders with international experience
+ 📈 Experienced Leadership: Learn from a founding team with experience at  Microsoft, Paribas Bank, Chubb insurance  🚀 Career Growth: Be part of a company that offers opportunities to grow and take on more responsibility.
+ 🌴 Team Bonding: Enjoy our  corporate event in Valencia and in our Middle East office
+Your Responsibilities
+Craft and refine proposals for B2B clients and international partners.
+Create and deliver compelling pitches, sales decks, and financial forecasts with the CEO and COO.
+Develop and implement operational strategies that enhance efficiency, strengthen cross-team coordination, and support scalable business expansion
+Schedule and participate in high-level business meetings with C-suite executives.
+What We’re Looking For
+Education: Bachelor’s or Master’s degree in Business, Marketing & Digital Business
+Skills: A proactive, self-starting attitude with exceptional organisational and time-management skills.
+Experience: Prior experience in sales, business development, or startups is a plus (e.g., former entrepreneur or early employee).
+Passion: Eagerness to work in a startup environment and a genuine interest in technology.
+Languages:
+Advanced English (our primary working language)
+Arabic (nice to have, our main clients are in the Middle East).
+What’s in It for You?
+Competitive Trainee Financial Aid: You will get financial aid monthly. 5 months 
+Flexibility: Enjoy flexible working hours and a hybrid work environment.
+Ownership: All full-time employees receive an ESOP share package, giving you a stake in Rommaana’s success (just like in Silicon Valley).
+Growth Opportunities: Learn from industry leaders and take on impactful projects.
+Team Events: Join us in Valencia, Spain for our annual summer corporate retreat!
+Junior Software Engineer 
+At Rommaana Technologies we put our users first. We are looking for colleagues who remain learners throughout their careers and whose curiosity and motivation in understanding machine learning and insurtech will provide “game-changing” insurtech software and algorithms.
+Job Overview: We are seeking a passionate and talented Junior Software Engineer to join our dynamic team. In this role, you will assist in the design, development, and deployment of innovative software solutions. You will work closely with senior engineers and cross-functional teams to gain valuable experience and contribute to the success of our projects.
+Senior Software Engineer
+At Rommaana Technologies we put our users first. We are looking for colleagues who remain learners throughout their careers and whose curiosity and motivation in understanding machine learning and insurtech will provide “game-changing” insurtech software and algorithms.
+Job Overview: We are seeking a highly skilled and motivated Senior Software Engineer to join our dynamic team. In this role, you will lead the design, development, and deployment of cutting-edge software solutions. You will collaborate with cross-functional teams to deliver high-quality products and mentor junior developers to foster their growth and development.
+BACKUP
+Responsibilities
+
+Define and implement best practices, code style guides, and various testing standards, including peer reviews and critiques
+Use your creative and innovation-driven ability to articulate engineering design patterns related to scale, performance, security, and usability
+Design and development of Web products
+Demonstrate understanding of programming principles
+Undertake tough engineering challenges
+Designing, implementing, and documenting APIs for use by other engineers
+Teaching and mentoring other engineers
+Robust understanding of Object Oriented Programming concepts and design
+Act as a client champion and use a long term perspective in client relations
+Provide technical leadership while taking a key part in strategic API, middle tier and database technology architectural and solution decision

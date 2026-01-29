@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl;
+  }
+
+  .animate-scan {
+    animation: scan 2.5s ease-in-out infinite;
+  }
+
+  .animate-spin-slow {
+    animation: spin 8s linear infinite;
+  }
+
+  .animate-reverse-spin {
+    animation: reverse-spin 12s linear infinite;
+  }
+}
+
+@keyframes scan {
+
+  0%,
+  100% {
+    top: 0%;
+    opacity: 0;
+  }
+
+  10%,
+  90% {
+    opacity: 1;
+  }
+
+  50% {
+    top: 100%;
+  }
+}
+
+@keyframes reverse-spin {
+  from {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
