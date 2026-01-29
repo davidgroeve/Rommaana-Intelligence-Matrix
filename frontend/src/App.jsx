@@ -70,15 +70,11 @@ function App() {
 
   useEffect(() => {
     if (selectedId && selectedCandidate) {
-      if (selectedCandidate.local_filename) {
-        setLoadingResume(true);
-        api.get(endpoints.resume(selectedCandidate.local_filename))
-          .then(res => setResumeText(res.data.text))
-          .catch(() => setResumeText("Could not load resume text."))
-          .finally(() => setLoadingResume(false));
-      } else {
-        setResumeText("No resume file associated.");
-      }
+      setLoadingResume(true);
+      api.get(endpoints.resume(selectedCandidate.id))
+        .then(res => setResumeText(res.data.text))
+        .catch(() => setResumeText("Could not load resume text."))
+        .finally(() => setLoadingResume(false));
     }
   }, [selectedId, selectedCandidate]);
 

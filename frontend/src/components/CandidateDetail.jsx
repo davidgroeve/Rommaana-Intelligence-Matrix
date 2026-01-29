@@ -149,16 +149,16 @@ export function CandidateDetail({ candidate, resumeText, loadingResume, onUpdate
                     </div>
                 </div>
                 <div className="text-right flex flex-col items-end gap-4 relative z-10">
-                    {candidate.local_filename ?
+                    {(candidate.local_filename || candidate.resume_url) ?
                         <button
                             onClick={async () => {
-                                if (!candidate.local_filename) return;
                                 try {
-                                    const response = await api.get(endpoints.download(candidate.local_filename), { responseType: 'blob' });
+                                    const response = await api.get(endpoints.download(candidate.id), { responseType: 'blob' });
                                     const url = window.URL.createObjectURL(new Blob([response.data]));
                                     const link = document.createElement('a');
                                     link.href = url;
-                                    link.setAttribute('download', candidate.local_filename);
+                                    const filename = candidate.local_filename || `resume_${candidate.id}.pdf`;
+                                    link.setAttribute('download', filename);
                                     document.body.appendChild(link);
                                     link.click();
                                     link.remove();
@@ -199,12 +199,12 @@ export function CandidateDetail({ candidate, resumeText, loadingResume, onUpdate
                             </pre>
                         )}
 
-                        {candidate.local_filename && (
+                        {(candidate.local_filename || candidate.resume_url) && (
                             <div className="mt-12 pt-8 border-t border-border/20 flex justify-center">
                                 <button
                                     onClick={async () => {
                                         try {
-                                            const response = await api.get(endpoints.download(candidate.local_filename), { responseType: 'blob' });
+                                            const response = await api.get(endpoints.download(candidate.id), { responseType: 'blob' });
                                             const file = new Blob([response.data], { type: 'application/pdf' });
                                             const fileURL = URL.createObjectURL(file);
                                             window.open(fileURL);
