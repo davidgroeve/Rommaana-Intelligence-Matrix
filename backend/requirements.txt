@@ -1,7 +1,6 @@
 fastapi
 uvicorn
 pypdf
-pandas
 supabase
 python-multipart
 python-dotenv

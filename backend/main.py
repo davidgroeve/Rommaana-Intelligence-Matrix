@@ -57,7 +57,8 @@ def load_feedback():
     if utils.supabase:
         try:
             res = utils.supabase.table("interviews_feedback").select("*").execute()
-            return {str(item["candidate_id"]): item for item in res.data}
+            data = res.data or []
+            return {str(item["candidate_id"]): item for item in data}
         except: pass
     return load_json(FEEDBACK_FILE, default={})
 
@@ -73,7 +74,8 @@ def load_status():
     if utils.supabase:
         try:
             res = utils.supabase.table("candidate_status").select("*").execute()
-            return {str(item["candidate_id"]): item["status"] for item in res.data}
+            data = res.data or []
+            return {str(item["candidate_id"]): item["status"] for item in data}
         except: pass
     return load_json(STATUS_PATH, default={})
 

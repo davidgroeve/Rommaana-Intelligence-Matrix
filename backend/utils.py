@@ -1,6 +1,5 @@
-import os
 import io
-import pandas as pd
+import csv
 import pypdf
 import re
 import json
@@ -46,93 +45,85 @@ def load_candidates(force_local=False):
             return response.data or []
         except Exception as e:
             print(f"Cloud fetch failed: {e}. Falling back to local.")
-            # If we expect cloud to be the source, maybe we shouldn't fallback to [] if it's supposed to HAVE data
-            # but returning [] is better than crashing
 
     if not os.path.exists(CSV_PATH):
         return []
     
-    df = pd.read_csv(CSV_PATH).fillna("")
     candidates = []
-    
     # Load cache
     metadata_cache = load_cache()
     auth_cache_updated = False
 
-    # Iterate over rows
-    for index, row in df.iterrows():
-        # precise column names from view_file output:
-        # Submission time,First name,Last name,Email,Phone,Are you currently working?,Attach you Resume
-        
-        resume_url = row.get("Attach you Resume", "")
-        if pd.isna(resume_url):
-            resume_url = ""
-            
-        # Extract filename from URL
-        # URL structure: https://.../ugd/FILENAME.pdf
-        # We need FILENAME.pdf
-        local_filename = ""
-        if resume_url:
-            # 1. Strip whitespace
-            resume_url = resume_url.strip()
-            # 2. Get the path part before query if any
-            path_part = resume_url.split('?')[0]
-            # 3. Split by slash to get the last part
-            parts = path_part.split('/')
-            if parts:
-                local_filename = parts[-1].strip()
-            
-            # 4. Final verification: Check if it actually ends with .pdf, if not, it might be a weird URL structure
-            if local_filename and not local_filename.lower().endswith('.pdf'):
-                # Try to see if there is any PDF filename in the full URL
-                match = re.search(r'([a-zA-Z0-9_-]+\.pdf)', resume_url, re.IGNORECASE)
-                if match:
-                    local_filename = match.group(1)
-        
-        # Check cache for metadata
-        cid = str(index)
-        metadata = metadata_cache.get(cid, {})
-        
-        if (not metadata or "text" not in metadata):
-            extraction_source = local_filename if (local_filename and os.path.exists(os.path.join(DATA_DIR, local_filename))) else resume_url
-            
-            if extraction_source:
-                text = get_pdf_text(extraction_source)
-                if text:
-                    role = classifier.classify_role(text)
-                    meta_entities = classifier.extract_metadata(text)
-                    metadata = {
-                        "role": role,
-                        "skills": meta_entities["skills"],
-                        "locations": meta_entities["locations"],
-                        "languages": meta_entities["languages"],
-                        "text": text
-                    }
-                    metadata_cache[cid] = metadata
-                    auth_cache_updated = True
-                else:
-                    # Default if no text
-                    metadata = {"role": "Unclassified", "skills": [], "locations": [], "languages": []}
-            else:
-                metadata = {"role": "Unclassified", "skills": [], "locations": [], "languages": []}
+    try:
+        with open(CSV_PATH, mode='r', encoding='utf-8-sig') as f:
+            reader = csv.DictReader(f)
+            for index, row in enumerate(reader):
+                # precise column names:
+                # Submission time,First name,Last name,Email,Phone,Are you currently working?,Attach you Resume
+                
+                resume_url = row.get("Attach you Resume", "")
+                if not resume_url:
+                    resume_url = ""
+                    
+                local_filename = ""
+                if resume_url:
+                    resume_url = resume_url.strip()
+                    path_part = resume_url.split('?')[0]
+                    parts = path_part.split('/')
+                    if parts:
+                        local_filename = parts[-1].strip()
+                    
+                    if local_filename and not local_filename.lower().endswith('.pdf'):
+                        match = re.search(r'([a-zA-Z0-9_-]+\.pdf)', resume_url, re.IGNORECASE)
+                        if match:
+                            local_filename = match.group(1)
+                
+                # Check cache for metadata
+                cid = str(index)
+                metadata = metadata_cache.get(cid, {})
+                
+                if (not metadata or "text" not in metadata):
+                    extraction_source = local_filename if (local_filename and os.path.exists(os.path.join(DATA_DIR, local_filename))) else resume_url
+                    
+                    if extraction_source:
+                        text = get_pdf_text(extraction_source)
+                        if text:
+                            role = classifier.classify_role(text)
+                            meta_entities = classifier.extract_metadata(text)
+                            metadata = {
+                                "role": role,
+                                "skills": meta_entities["skills"],
+                                "locations": meta_entities["locations"],
+                                "languages": meta_entities["languages"],
+                                "text": text
+                            }
+                            metadata_cache[cid] = metadata
+                            auth_cache_updated = True
+                        else:
+                            metadata = {"role": "Unclassified", "skills": [], "locations": [], "languages": []}
+                    else:
+                        metadata = {"role": "Unclassified", "skills": [], "locations": [], "languages": []}
 
-        candidates.append({
-            "id": index, # Use index as ID for simplicity
-            "submission_time": row.get("Submission time", ""),
-            "first_name": row.get("First name", ""),
-            "last_name": row.get("Last name", ""),
-            "email": row.get("Email", ""),
-            "phone": row.get("Phone", ""),
-            "working_status": row.get("Are you currently working?", ""),
-            "resume_url": resume_url,
-            "local_filename": local_filename,
-            "role": metadata.get("role", "Unclassified"),
-            "skills": metadata.get("skills", []),
-            "locations": metadata.get("locations", []),
-            "languages": metadata.get("languages", []),
-            "resume_text": metadata.get("text", "")
-        })
-        
+                candidates.append({
+                    "id": index,
+                    "submission_time": row.get("Submission time", ""),
+                    "first_name": row.get("First name", ""),
+                    "last_name": row.get("Last name", ""),
+                    "email": row.get("Email", ""),
+                    "phone": row.get("Phone", ""),
+                    "working_status": row.get("Are you currently working?", ""),
+                    "resume_url": resume_url,
+                    "local_filename": local_filename,
+                    "role": metadata.get("role", "Unclassified"),
+                    "skills": metadata.get("skills", []),
+                    "locations": metadata.get("locations", []),
+                    "languages": metadata.get("languages", []),
+                    "resume_text": metadata.get("text", "")
+                })
+    except Exception as e:
+        print(f"Error reading CSV: {e}")
+        return []
+
     if auth_cache_updated:
         save_cache(metadata_cache)
         
