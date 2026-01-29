@@ -12,7 +12,7 @@ load_dotenv()
 
 # Constants
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_DIR = os.path.abspath(os.path.join(BASE_DIR, "../../"))
+DATA_DIR = os.path.abspath(os.path.join(BASE_DIR, ".."))
 CSV_PATH = os.path.join(DATA_DIR, "Recruitment.csv")
 CACHE_PATH = os.path.join(BASE_DIR, "metadata_cache.json")
 
@@ -22,7 +22,10 @@ SUPABASE_KEY = os.getenv("SUPABASE_SERVICE_ROLE_KEY")
 
 supabase: Client = None
 if SUPABASE_URL and SUPABASE_KEY:
-    supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+    try:
+        supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+    except Exception as e:
+        print(f"CRITICAL: Supabase init failed: {e}")
 
 def load_cache():
     if os.path.exists(CACHE_PATH):
