@@ -93,6 +93,12 @@ function App() {
       setJobs(jobsRes.data);
     } catch (err) {
       console.error("Failed to fetch data", err);
+      const detail = err.response?.data?.detail || err.response?.data?.error || "Unknown Error";
+      const traceback = err.response?.data?.traceback;
+      if (traceback) {
+        console.warn("Backend Traceback:", traceback);
+      }
+      alert(`Critical System Failure: ${detail}\nCheck console for details.`);
     } finally {
       setLoading(false);
     }
