@@ -185,6 +185,17 @@ def submit_feedback(request: FeedbackRequest):
         except: pass
     return {"status": "error"}
 
+@app.get("/api/health")
+def health_check():
+    return {
+        "status": "online",
+        "supabase_connected": utils.supabase is not None,
+        "env_check": {
+            "url_set": os.getenv("SUPABASE_URL") is not None,
+            "key_set": os.getenv("SUPABASE_SERVICE_ROLE_KEY") is not None
+        }
+    }
+
 @app.get("/api/candidates/{candidate_id}/investigate")
 def investigate_candidate(candidate_id: int):
     return {"summary": "Tactical scan complete. Matches found in professional clusters."}
