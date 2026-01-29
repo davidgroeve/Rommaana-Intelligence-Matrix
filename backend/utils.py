@@ -43,9 +43,11 @@ def load_candidates(force_local=False):
     if supabase and not force_local:
         try:
             response = supabase.table("candidates").select("*").execute()
-            return response.data
+            return response.data or []
         except Exception as e:
             print(f"Cloud fetch failed: {e}. Falling back to local.")
+            # If we expect cloud to be the source, maybe we shouldn't fallback to [] if it's supposed to HAVE data
+            # but returning [] is better than crashing
 
     if not os.path.exists(CSV_PATH):
         return []

@@ -25,11 +25,11 @@ STATUS_PATH = os.path.join(BASE_DIR, "status.json")
 
 # --- Data Loading Helpers ---
 
-def load_json(path):
-    if not os.path.exists(path): return {}
+def load_json(path, default=[]):
+    if not os.path.exists(path): return default
     with open(path, "r") as f:
         try: return json.load(f)
-        except: return {}
+        except: return default
 
 def save_json(path, data):
     with open(path, "w") as f:
@@ -41,15 +41,15 @@ def load_feedback():
             res = utils.supabase.table("interviews_feedback").select("*").execute()
             return {str(item["candidate_id"]): item for item in res.data}
         except: pass
-    return load_json(FEEDBACK_FILE)
+    return load_json(FEEDBACK_FILE, default={})
 
 def load_jobs():
     if utils.supabase:
         try:
             res = utils.supabase.table("jobs").select("*").execute()
-            return res.data
+            return res.data or []
         except: pass
-    return load_json(JOBS_PATH)
+    return load_json(JOBS_PATH, default=[])
 
 def load_status():
     if utils.supabase:
@@ -57,7 +57,7 @@ def load_status():
             res = utils.supabase.table("candidate_status").select("*").execute()
             return {str(item["candidate_id"]): item["status"] for item in res.data}
         except: pass
-    return load_json(STATUS_PATH)
+    return load_json(STATUS_PATH, default={})
 
 # --- Pydantic Models ---
 
