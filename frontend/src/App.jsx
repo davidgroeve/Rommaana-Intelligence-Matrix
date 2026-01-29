@@ -73,7 +73,11 @@ function App() {
       setLoadingResume(true);
       api.get(endpoints.resume(selectedCandidate.id))
         .then(res => setResumeText(res.data.text))
-        .catch(() => setResumeText("Could not load resume text."))
+        .catch((err) => {
+          console.error("Resume Load Error:", err);
+          const status = err.response?.status;
+          setResumeText(`Could not load resume text. (Error: ${status || "Network/Timeout"})`);
+        })
         .finally(() => setLoadingResume(false));
     }
   }, [selectedId, selectedCandidate]);
